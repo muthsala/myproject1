@@ -4,12 +4,9 @@
 </head>
 <body>
 <script>
-	var myarray=[];
- 	var arrList=new ArrayList(myarray);
-
- 	function ArrayList(arr){
+	function ArrayList(arr){
         this.arr=arr;
-		}
+	}
  	ArrayList.prototype.add = function(value) {
         this.arr.push(value);
 		return this.arr;
@@ -19,36 +16,39 @@
 		this.arr.pop(value);
 		return this.arr;
     }
-    
 	ArrayList.prototype.sort=function(){
 		this.arr.sort();
 		return this.arr;
 	}
-	ArrayList.prototype.addMore= function(){
-  		for(var i=0;i<=arguments.length-1;i++){
-  			this.arr.push(arguments[i]);	
-  		}
-    	return this.arr;
-  	}
-    
-  	ArrayList.prototype.update=function(index,value){
-    	if(index<=this.arr.length-1){
+	ArrayList.prototype.get=function(index){
+		if(index<this.arr.length)
+			return this.arr[index];
+		else
+			return "Index not found";
+	}
+	ArrayList.prototype.update=function(index,value){
+    	if(index<this.arr.length){
       		 this.arr[index]=value;
        		return this.arr;
    		}
   		else{
-    		console.log("Index not found so inserting the value");
+    		console.log("Index not found ,so inserting the value");
     		this.arr.push(value);
     		return this.arr;
   		}
   	}
-  	ArrayList.prototype.reverse=function(){
-  		this.arr.reverse();
-  		return this.arr;
-  	}
-	arrList.add(10);
-	arrList.add(20);
+  	var myarray=[];
+ 	var arr=new ArrayList(myarray);
 
+	arr.add(10);
+	arr.add(30);
+	arr.add(22);
+	arr.add(15);
+	console.log(arr.add(35));
+	console.log(arr.delete());
+	console.log(arr.sort());
+	console.log(arr.get(2));
+	console.log(arr.update(3,77));
 </script>
 </body>
 </html>
